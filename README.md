@@ -40,3 +40,15 @@ And if we click on the given ip, we can see information about our cluster:
 
 
 ![alt text](image.png)
+
+Using "Service" object:
+
+    kubectl  expose deployment first-app --type=NodePort --port=8080
+
+And then we can see our services with:
+
+    kubectl get services
+
+Since we are using minikube for our demo lab, we have to use this code in order to check if our pods is working how we want it:
+
+    minikube service first-app
