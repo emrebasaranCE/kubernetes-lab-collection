@@ -28,3 +28,15 @@ If we want to see our deployments, we can use:
 If we want to see our pods, we can use:
 
     kubectl get pods
+
+
+# 
+
+If we want to see our pods and deployments inside our cluster, we can use minikube's dashboard like this:
+
+    minikube dashboard
+
+And if we click on the given ip, we can see information about our cluster:
+
+
+![alt text](image.png)
