@@ -98,3 +98,10 @@ After finding our desired version:
 Another way to create deployments is .yaml files. After creating .yaml file, we can simply use this:
 
     kubectl apply -f .\deployment.yaml
+
+Then we can create our service.yaml file too and run this service like this:
+
+    kubectl apply -f .\service.yaml 
+    minikube service [your_service_name]
+
+With this commands, your service will be up and running.
