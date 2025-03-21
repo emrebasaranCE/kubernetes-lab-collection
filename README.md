@@ -63,13 +63,32 @@ This code right here will create 3 replicas for our first-app deployment. It wil
 
 To update deployments, we have to use tags in our new created build:
 
-        docker build -t kub-first-app:2 .
+    docker build -t kub-first-app:2 .
 
-        docker tag kub-first-app mandalina/kub-lab-001:2
+    docker tag kub-first-app mandalina/kub-lab-001:2
 
-        docker push mandalina/kub-lab-001:2
+    docker push mandalina/kub-lab-001:2
 
-        kubectl set image deployment/first-app kub-lab-001=mandalina/kub-lab-001:2
+    kubectl set image deployment/first-app kub-lab-001=mandalina/kub-lab-001:2
 
 # 
 
+If we want to check the status of our deployment:
+
+    kubectl rollout status deployment/first-app
+
+If we want to undo our latest deployment:
+
+    kuebctl rollout undo deplotment/first-app 
+
+If we want to rollout to a specific version, we can use this for history:
+
+    kubectl rollout history deplotment/first-app 
+
+and then:
+
+    kuebctl rollout history deployment/first-app --revision=[id]
+
+After finding our desired version:
+
+    kubectl rollout undo deployment/first-app --to-revision=[revision_target_id]
