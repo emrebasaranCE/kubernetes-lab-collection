@@ -79,7 +79,7 @@ If we want to check the status of our deployment:
 
 If we want to undo our latest deployment:
 
-    kuebctl rollout undo deplotment/first-app 
+    kuebctl rollout undo deployment/first-app 
 
 If we want to rollout to a specific version, we can use this for history:
 
@@ -92,3 +92,9 @@ and then:
 After finding our desired version:
 
     kubectl rollout undo deployment/first-app --to-revision=[revision_target_id]
+
+#
+
+Another way to create deployments is .yaml files. After creating .yaml file, we can simply use this:
+
+    kubectl apply -f .\deployment.yaml
