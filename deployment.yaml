@@ -17,4 +17,9 @@ spec:
       containers:
         - name: second-node
           image: mandalina/kub-lab-001:2
-        
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 10
+            initialDelaySeconds: 30

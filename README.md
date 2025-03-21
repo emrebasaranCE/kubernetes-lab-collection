@@ -111,3 +111,8 @@ Annnddd after creating this deployments, you can use this to delete multiple dep
     kubectl delete -f .\deployment.yaml
 
 We can actullay merge .yaml files with only using `---` between the objects, it makes sense. 
+
+Also one of the main things that we can write into our Deployment Configuration File is `livenessProbe`.
+This feature tells kubernetes to look to container if the container is healthy or not. 
+This is one of the most important things for checking if the services is working or not because this feature can use 
+httpGet and stuff. 
