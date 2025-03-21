@@ -105,3 +105,9 @@ Then we can create our service.yaml file too and run this service like this:
     minikube service [your_service_name]
 
 With this commands, your service will be up and running.
+
+Annnddd after creating this deployments, you can use this to delete multiple deployments:
+
+    kubectl delete -f .\deployment.yaml
+
+We can actullay merge .yaml files with only using `---` between the objects, it makes sense. 
