@@ -3,3 +3,5 @@ In this example we have 3 different backend apps and in the end we will have 3 d
 `auth_api` used for authenticating users  
 `tasks_api` store and return new tasks  
 `users_api` creating and login users in
+
+1) First we created a users-deployment.yaml to create a deployment.
