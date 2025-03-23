@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: users
-        image: mandalina/kub-lab-004
+        image: mandalina/kub-lab-004:1

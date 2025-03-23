@@ -5,3 +5,5 @@ In this example we have 3 different backend apps and in the end we will have 3 d
 `users_api` creating and login users in
 
 1) First we created a users-deployment.yaml to create a deployment.
+
+2) We created a users-service.deployment.yaml for our pod to communicate with outside our cluster.
