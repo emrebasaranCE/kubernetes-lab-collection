@@ -7,3 +7,5 @@ In this example we have 3 different backend apps and in the end we will have 3 d
 1) First we created a users-deployment.yaml to create a deployment.
 
 2) We created a users-service.deployment.yaml for our pod to communicate with outside our cluster.
+
+3) Then we configured users-deployment file for auth container since we want these two container in the same pod.
