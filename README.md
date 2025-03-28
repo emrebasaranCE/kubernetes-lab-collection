@@ -1,23 +1,52 @@
-In this example we have 3 different backend apps and in the end we will have 3 different container which needs to communicate with each other. This example does not care about data persistency. Therefor the data will be vanished after using `docker-compose down` or after the deployment delete.
+# Kubernetes Lab 3
 
-`auth_api` used for authenticating users  
-`tasks_api` store and return new tasks  
-`users_api` creating and login users in
+In this lab, we work with **three different backend services**, each deployed as a container, to understand how microservices communicate within a Kubernetes cluster. Unlike the previous lab, this one **does not focus on data persistence** — meaning all data is ephemeral and will be lost after running `docker-compose down` or deleting the deployment.
 
-1) First we created a users-deployment.yaml to create a deployment.
- 
-2) We created a users-service.deployment.yaml for our pod to communicate with outside our cluster. To our pod to communicate with the outside world, we select the service type as a LoadBalancer, this way while its balancing the incoming traffic it also conntects to outer world.
+---
 
-3) Then we configured users-deployment file for auth container since we want these two container in the same pod.
+## Services Overview
 
-4) Then our instructor decided we should seperate this containers and therefor we are creating seperate auth-deployment.yaml file.
+- **`auth_api`** – Handles user authentication
+- **`tasks_api`** – Stores and returns task data
+- **`users_api`** – Manages user creation and login
 
-5) After creating other .yaml files for each app which looks like this:
-    - auth-deployment.yaml
-    - auth-service.yaml
-    - users-deployment.yaml
-    - users-service.yaml
-    - tasks-deployment.yaml
-    - tasks-service.yaml
+---
 
-6) Now we all of our containers are in different deployments which means they are in seperate pods. Now all we have to do is the communications of this pods.
+## Deployment Workflow
+
+1. **Initial Setup**  
+   We first created `users-deployment.yaml` to deploy the `users_api`.
+
+2. **Exposing the Pod**  
+   Then we created `users-service.yaml`, which defines a **LoadBalancer service** to expose the `users_api` pod to external traffic.
+
+3. **Combining Containers (Initial Attempt)**  
+   Initially, the `auth_api` was added to the same pod as `users_api` within the `users-deployment.yaml` file.
+
+4. **Refactoring for Best Practice**  
+   Upon the instructor's suggestion, we separated the containers into their own deployments, aligning with Kubernetes best practices of **one container per pod**.
+
+5. **Deployment and Service Files Created for Each App:**
+   - `auth-deployment.yaml`
+   - `auth-service.yaml`
+   - `users-deployment.yaml`
+   - `users-service.yaml`
+   - `tasks-deployment.yaml`
+   - `tasks-service.yaml`
+
+6. **Establishing Internal Communication**  
+   With each service in its own pod and deployment, communication is achieved via Kubernetes **Service names** (which act as DNS names inside the cluster).
+
+---
+
+## Summary
+
+This lab demonstrates how to:
+
+- Deploy multiple microservices into **separate pods** using individual `Deployment` files.
+- Expose each service to the cluster (and optionally the outside world) using `Service` resources.
+- Understand the difference between initial co-located containers and **refactored, decoupled services**.
+- Establish **inter-pod communication** using Kubernetes service discovery via DNS.
+- Operate in a **stateless environment**, where data is not persisted beyond container lifecycle.
+
+This is a foundational step toward mastering service-oriented architecture and inter-service communication within a Kubernetes environment.
