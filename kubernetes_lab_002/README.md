@@ -1,4 +1,4 @@
-# Kubernetes Lab 3
+# Kubernetes Lab 2
 
 In this lab, we dive deeper into Kubernetes configuration by deploying a containerized Node.js application (`app.js`) with persistent storage and dynamic environment configuration.
 
